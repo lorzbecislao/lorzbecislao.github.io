@@ -42,14 +42,17 @@
 				// 	$(this).parents('form').submit();
 
                 $.ajax({
-                    url: 'php/send.php',
+                    url: 'https://formspree.io/f/mrgjdewb',
                     method: 'post',
                     data: new FormData($("form")[0]),
+		    headers: {
+            		'Accept': 'application/json'
+        	    },
                     dataType: 'json',
                     processData: false,
                     contentType: false,
                     success: function(result) {
-                        if (result.status == 'success'){
+                        if (result.ok){
                             $('.message').html('Thank you for reaching out! I will get back to you soon.'); 
                             $('.message').css('color', 'green'); 
                         } else {
